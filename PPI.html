@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=<!-- Load WebChat -->            <style>                #wc-childimg {                    position: fixed;                    bottom: 5%;                    right: 5%;                    z-index: 999999;                    cursor: pointer;                }                #wc-childimg>img {                    display: none;                    cursor: pointer;                }                #wc-close {                    display: none;                    position: fixed;                    right: calc(2.3%);                    bottom: calc(-1.2% + 490px);                    cursor: pointer;                    font-size: 18px;                    font-weight: 500;                    z-index: 1000001;                }                #wc-close-button {                    width: 18px;                    height: 18px;                }                #wc-default-icon {                    font-size: 50px;                    color: #20C997;                }                .wc-frame-content {                    right: 3vw;                    bottom: 1vh;                    border: none;                    border-radius: 25px;                    box-shadow: 0 1pt 12pt rgba(0, 0, 0, 0.20);                    height: 0;                    width: 360px;                    position: fixed;                    z-index: 1000000;                    vertical-align: bottom;                    transition: height 0.5s;                }                .wc-frame-content-open {                    height: 480px;                }                .fa.fa-times-circle {                    background-color: white;                    border-radius: 50%;                }                @media only screen and (max-height: 550px) {                    .wc-frame-content-open {                        height: 75vh;                    }                    #wc-close {                        bottom: calc(-1.2% + 75vh);                    }                }            </style>            <div class="
+        wc-root-show"> <span id="wc-close"> <i class="fa fa-times-circle"></i> </span>
+    <div id="wc-childimg"> <i id="wc-default-icon" class="far fa-comment-dots"></i> </div>
+    <div id="wc-frame-show" class="wc-show"> <iframe id="ifrmBotBotzy" scrolling="no" class="wc-frame-content"
+            allow="geolocation"></iframe> </div>
+    <script>
+        var initHeight = 480;
+        var iframeLoaded = false;
+
+        function onLoadWebChat() {
+            var imgElement = document.getElementById("wc-childimg").children[0];
+            imgElement.style.display = "block";
+        }
+        window.addEventListener("load", function () {
+            var imgElement = document.getElementById("wc-childimg");
+            var closeElement = document.getElementById("wc-close");
+            imgElement.addEventListener("click", showFrame);
+            closeElement.addEventListener("click", hideFrame);
+            addStyleShett('https://use.fontawesome.com/releases/v5.6.3/css/fontawesome.css');
+            addStyleShett('https://use.fontawesome.com/releases/v5.6.3/css/regular.css');
+            addStyleShett('https://use.fontawesome.com/releases/v5.6.3/css/solid.css');
+            onLoadWebChat();
+        });
+
+        function addStyleShett(url) {
+            const head = document.getElementsByTagName('HEAD')[0];
+            let link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = url;
+            head.appendChild(link);
+        }
+
+        function showFrame() {
+            if (!iframeLoaded) {
+                var iframeBot = document.getElementById("ifrmBotBotzy");
+                var date = Date.now();
+                iframeBot.setAttribute("src",
+                    "https://ibang-webviews.ibang.ai/chats/webchat?t=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNTU1IiwibmFtZWlkIjoiMTU1NSIsImtleSI6Ik9TeHhjT0p5RlZhd1hYRTB6Z0xmNkE9PSIsImp0aSI6IjM0MjgxMTE5LWFhNWEtNGQyMi1iNjgyLTFjNmExZmZjM2E4MSIsImlhdCI6MTY1NzQ4MjQ0OCwicm9sIjoid2ViX2FjY2VzcyIsImlkIjoiMTU1NSIsIm5iZiI6MTY1NzQ4MjQ0OCwiZXhwIjoxNjU3NDg5NjQ4LCJpc3MiOiJ3ZWJBcGkiLCJhdWQiOiJ3ZWJBcGkifQ.PLvCaAzYnunVa9eo_UxqxQUqXKzUkMxuXYg4gbLBciw&d=" +
+                    date);
+                iframeLoaded = true;
+            }
+            var frameElement = document.getElementById("wc-frame-show");
+            var closeElement = document.getElementById("wc-close");
+            var frameContent = frameElement.getElementsByClassName("wc-frame-content")[0];
+            frameContent.classList.add("wc-frame-content-open");
+            setTimeout(function () {
+                closeElement.style.display = "block";
+            }, 1000);
+        }
+
+        function hideFrame() {
+            var frameElement = document.getElementById("wc-frame-show");
+            var closeElement = document.getElementById("wc-close");
+            closeElement.style.display = "none";
+            var frameContent = frameElement.getElementsByClassName("wc-frame-content")[0];
+            frameContent.classList.remove("wc-frame-content-open");
+        }
+    </script>
+    </div>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
